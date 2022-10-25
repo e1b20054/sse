@@ -40,17 +40,15 @@ public class Sample3AuthConfiguration {
     return new InMemoryUserDetailsManager(customer1, customer2, seller);
   }
 
-  /*
-   * @Bean
-   * public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-   * http.formLogin();
-   * http.authorizeHttpRequests().mvcMatchers("/sample5/**").authenticated();
-   * http.logout().logoutSuccessUrl("/");
-   * http.csrf().disable();
-   * http.headers().frameOptions().disable();
-   * return http.build();
-   * }
-   */
+  @Bean
+  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http.formLogin();
+    http.authorizeHttpRequests().mvcMatchers("/sample5/**").authenticated();
+    http.logout().logoutSuccessUrl("/");
+    http.csrf().disable();
+    http.headers().frameOptions().disable();
+    return http.build();
+  }
 
   @Bean
   PasswordEncoder passwordEncoder() {
